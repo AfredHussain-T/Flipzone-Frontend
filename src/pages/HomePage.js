@@ -4,7 +4,6 @@ import axios from "axios";
 import { Checkbox, Radio } from "antd";
 import { Prices } from "../components/Prices";
 import ProductCard from "../components/ProductCard";
-import { AiOutlineReload } from "react-icons/ai";
 import "../styles/Homepage.css";
 
 
@@ -178,7 +177,7 @@ const HomePage = () => {
               >
                 {loading ? ("Loading...") : (<>
                   {" "}
-                  Loadmore <AiOutlineReload />
+                  Loadmore...
                 </>)}
               </button>
             )}
