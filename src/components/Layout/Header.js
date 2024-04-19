@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { useAuth } from "../../context/auth";
-import { token } from "morgan";
 import toast from 'react-hot-toast';
 import SearchInput from "../Form/SearchInput";
 import useCategory from "../../hooks/useCategory";
