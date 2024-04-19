@@ -3,7 +3,6 @@ import Footer from "./Footer";
 import Header from "./Header";
 import { Helmet } from "react-helmet";
 import { Toaster } from 'react-hot-toast';
-import Nav from "./Nav";
 
 const Layout = ({ children,title,description,keywords,author}) => {
   return (
