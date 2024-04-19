@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Layout from "../components/Layout/Layout";
 import axios from "axios";
 import ProductCard from "../components/ProductCard";
+import { API_URI } from "../context/api";
 
 const CategoryProduct = () => {
   const params = useParams();
@@ -18,7 +19,7 @@ const CategoryProduct = () => {
   const getProductsByCategory = async () => {
     try {
       const { data } = await axios.get(
-        `/api/v1/product/product-category/${params.slug}`
+        `${API_URI}/api/v1/product/product-category/${params.slug}`
       );
       setCategory(data?.category);
       setProducts(data?.products);

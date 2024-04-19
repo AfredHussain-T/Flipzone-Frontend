@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/cart";
 import toast from 'react-hot-toast';
+import { API_URI } from '../context/api';
 
 const ProductCard = ({products}) => {
     
@@ -12,7 +13,7 @@ const ProductCard = ({products}) => {
             {products?.map((p) => (
               <div className="card m-2" key={p._id}>
                 <img
-                  src={`/api/v1/product/product-photo/${p._id}`}
+                  src={`${API_URI}/api/v1/product/product-photo/${p._id}`}
                   className="card-img-top"
                   alt={p.name}
                 />

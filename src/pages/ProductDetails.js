@@ -6,6 +6,7 @@ import ProductCard from "../components/ProductCard";
 import "../styles/ProductDetailsStyles.css";
 import { useCart } from "../context/cart";
 import toast from 'react-hot-toast'
+import { API_URI } from "../context/api";
 
 const ProductDetails = () => {
     const [cart, setCart] = useCart();
@@ -22,7 +23,7 @@ const ProductDetails = () => {
   const getProduct = async () => {
     const {slug} = params
     try {
-        const {data} = await axios.get(`/api/v1/product/get-product/${slug}`);
+        const {data} = await axios.get(`${API_URI}/api/v1/product/get-product/${slug}`);
         setProduct(data?.product);
         getSimilarProducts(data?.product._id, data?.product.category._id);
     } catch (error) {
@@ -35,7 +36,7 @@ const ProductDetails = () => {
 
 const getSimilarProducts = async (pid, cid) => {
     try {
-        const {data} = await axios.get(`/api/v1/product/similar-product/${pid}/${cid}`);
+        const {data} = await axios.get(`${API_URI}/api/v1/product/similar-product/${pid}/${cid}`);
         setRelatedProducts(data?.products);
     } catch (error) {
         console.log(error);
@@ -46,7 +47,7 @@ const getSimilarProducts = async (pid, cid) => {
     <Layout title={"FlipZone"}>
         <div className="row container product-details">
             <div className="col-md-6 productImgContainer">
-                    <img src={`/api/v1/product/product-photo/${product._id}`} className="card-img-top productImg" alt={product.name}/>
+                    <img src={`${API_URI}/api/v1/product/product-photo/${product._id}`} className="card-img-top productImg" alt={product.name}/>
             </div>
             <div className="col-md-6 product-details-info">
                     <h1 className=" text-center">Product Details</h1>

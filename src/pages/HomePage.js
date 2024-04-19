@@ -5,6 +5,7 @@ import { Checkbox, Radio } from "antd";
 import { Prices } from "../components/Prices";
 import ProductCard from "../components/ProductCard";
 import "../styles/Homepage.css";
+import { API_URI } from "../context/api";
 
 
 
@@ -20,7 +21,7 @@ const HomePage = () => {
   // get all cat
   const getAllCategory = async () => {
     try {
-      const { data } = await axios.get("/api/v1/category/get-category");
+      const { data } = await axios.get(`${API_URI}/api/v1/category/get-category`);
       console.log(data);
       if (data?.success) {
         setCategories(data?.category);
@@ -34,7 +35,7 @@ const HomePage = () => {
   const getAllProducts = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+      const { data } = await axios.get(`${API_URI}/api/v1/product/product-list/${page}`);
       setLoading(false);
       setProducts(data.products);
     } catch (error) {
@@ -47,7 +48,7 @@ const HomePage = () => {
 
   const getTotal = async () => {
     try {
-      const { data } = await axios.get("/api/v1/product/product-count");
+      const { data } = await axios.get(`${API_URI}/api/v1/product/product-count`);
       setTotal(data?.total);
     } catch (error) {
       console.log(error);
@@ -58,7 +59,7 @@ const HomePage = () => {
   const loadmore = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+      const { data } = await axios.get(`${API_URI}/api/v1/product/product-list/${page}`);
       setLoading(false);
       setProducts([...products, ...data?.products]);
     } catch (error) {
@@ -104,7 +105,7 @@ const HomePage = () => {
   // get filtered products
   const filterProduct = async () => {
     try {
-      const { data } = await axios.post(`/api/v1/product/product-filters`, {
+      const { data } = await axios.post(`${API_URI}/api/v1/product/product-filters`, {
         checked,
         radio,
       });

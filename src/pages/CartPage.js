@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import DropIn from "braintree-web-drop-in-react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { API_URI } from "../context/api";
 
 const CartPage = () => {
   const [auth, setAuth] = useAuth();
@@ -49,7 +50,7 @@ const CartPage = () => {
 
   const getToken = async () => {
     try {
-      const { data } = await axios.get("/api/v1/product/braintree/token");
+      const { data } = await axios.get(`${API_URI}/api/v1/product/braintree/token`);
       setClientToken(data?.clientToken);
     } catch (error) {
       console.log(error);
@@ -64,7 +65,7 @@ const CartPage = () => {
     try {
       setLoading(true);
       const { nonce } = await instance.requestPaymentMethod();
-      const { data } = await axios.post("/api/v1/product/braintree/payment", {
+      const { data } = await axios.post(`${API_URI}/api/v1/product/braintree/payment`, {
         nonce,
         cart
       });
@@ -104,7 +105,7 @@ const CartPage = () => {
               <div className="row p-5 card flex-row checkoutCard">
                 <div className="col-md-4">
                   <img
-                    src={`/api/v1/product/product-photo/${p._id}`}
+                    src={`${API_URI}/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top h-40 checkoutCardImg"
                     alt={p.name}
                     onClick={() => {

@@ -4,6 +4,7 @@ import Layout from '../../components/Layout/Layout'
 import toast from 'react-hot-toast'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import { API_URI } from '../../context/api'
 
 const Products = () => {
     const [products, setProducts] = useState([]);
@@ -12,7 +13,7 @@ const Products = () => {
 
     const getAllProducts = async () => {
         try {
-            const {data} = await axios.get("/api/v1/product/get-product");
+            const {data} = await axios.get(`${API_URI}/api/v1/product/get-product`);
             setProducts(data.products);
 
         } catch (error) {
@@ -37,7 +38,7 @@ const Products = () => {
                 {products?.map(p => (
                     <Link key={p._id} to={`/dashboard/admin/product/${p.slug}`} className='product-link'>
                         <div className="card m-2" style={{width: '18rem'}}>
-                            <img src={`/api/v1/product/product-photo/${p._id}`} className="card-img-top" alt={p.name} />
+                            <img src={`${API_URI}/api/v1/product/product-photo/${p._id}`} className="card-img-top" alt={p.name} />
                             <div className="card-body">
                                 <h5 className="card-title">{p.name.substring(0,15)}...</h5>
                                 <p className="card-text">{p.description.substring(0,30)}...</p>

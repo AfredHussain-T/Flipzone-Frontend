@@ -3,6 +3,7 @@ import Layout from "../../components/Layout/Layout";
 import toast from 'react-hot-toast';
 import {useNavigate} from "react-router-dom"
 import axios from "axios";
+import { API_URI } from "../../context/api";
 
 
 
@@ -18,7 +19,7 @@ const ForgotPassword = () => {
         // toast.success('Registered Successfully');
 
         try {
-          const res = await axios.post('/api/v1/auth/forgot-password',
+          const res = await axios.post(`${API_URI}/api/v1/auth/forgot-password`,
                         {email,newPassword, answer}
                       );
           if(res && res.data.success){

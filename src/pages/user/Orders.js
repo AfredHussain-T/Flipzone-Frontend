@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useAuth } from '../../context/auth';
 import moment from 'moment'
 import {useNavigate} from 'react-router-dom'
+import { API_URI } from '../../context/api';
 
 const Orders = () => {
     const navigate = useNavigate();
@@ -15,7 +16,7 @@ const Orders = () => {
 
     const getOrders = async () => {
         try {
-            const {data} = await axios.get("/api/v1/auth/orders");
+            const {data} = await axios.get(`${API_URI}/api/v1/auth/orders`);
             setOrders(data);
         } catch (error) {
             console.log(error);
@@ -62,7 +63,7 @@ const Orders = () => {
                             <div className="row p-5 card flex-row checkoutCard mt-2">
                               <div className="col-md-4">
                                 <img
-                                  src={`/api/v1/product/product-photo/${p._id}`}
+                                  src={`${API_URI}/api/v1/product/product-photo/${p._id}`}
                                   className="card-img-top h-40 checkoutCardImg"
                                   alt={p.name}
                                   onClick={() => {

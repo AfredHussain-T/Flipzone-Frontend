@@ -5,6 +5,7 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import {useNavigate} from 'react-router-dom'
 import {Select} from 'antd'
+import { API_URI } from '../../context/api'
 
 const {Option} = Select;
 
@@ -33,7 +34,7 @@ const CreateProduct = () => {
       productData.append("shipping", shipping);
       productData.append("photo", photo);
       productData.append("category", category);
-      const {data} = await axios.post('/api/v1/product/create-product', productData)
+      const {data} = await axios.post(`${API_URI}/api/v1/product/create-product`, productData)
       if(data?.success){
         toast.success("Product Created Successfully");
         navigate("/dashboard/admin/products");
@@ -49,7 +50,7 @@ const CreateProduct = () => {
   // get all cat
   const getAllCategory = async () => {
     try {
-      const { data } = await axios.get("/api/v1/category/get-category");
+      const { data } = await axios.get(`${API_URI}/api/v1/category/get-category`);
       console.log(data);
       if (data?.success) {
         setCategories(data?.category);

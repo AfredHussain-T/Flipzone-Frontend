@@ -4,6 +4,7 @@ import UserMenu from "../../components/Layout/UserMenu";
 import { useAuth } from "../../context/auth";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { API_URI } from "../../context/api";
 
 const Profile = () => {
   // context
@@ -33,7 +34,7 @@ useEffect(()=>{
     // toast.success('Registered Successfully');
 
     try {
-      const {data} = await axios.put("/api/v1/auth/update-profile", {
+      const {data} = await axios.put(`${API_URI}/api/v1/auth/update-profile`, {
         name,
         email,
         password,

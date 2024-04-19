@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import {useNavigate, useLocation} from "react-router-dom"
 import axios from "axios";
 import { useAuth } from "../../context/auth";
+import { API_URI } from "../../context/api";
 
 
 const Login = () => {
@@ -18,7 +19,7 @@ const Login = () => {
         // toast.success('Registered Successfully');
 
         try {
-          const res = await axios.post('/api/v1/auth/login',
+          const res = await axios.post(`${API_URI}/api/v1/auth/login`,
                         {email,password}
                       );
           if(res && res.data.success){

@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import { useAuth } from '../../context/auth';
 import moment from 'moment';
 import {Select} from 'antd';
+import { API_URI } from '../../context/api';
 
 const {Option} = Select;
 
@@ -18,14 +19,14 @@ const AdminOrders = () => {
 //   get All Orders
 
   const getAllOrders = async () => {
-    const {data} = await axios.get("/api/v1/auth/all-orders");
+    const {data} = await axios.get(`${API_URI}/api/v1/auth/all-orders`);
     setOrders(data?.allOrders);
   }
 
 //   order status update
 const handleChange = async (value, orderId) => {
     try {
-        const {data} = await axios.put(`/api/v1/auth/order-status/${orderId}`,{status:value});
+        const {data} = await axios.put(`${API_URI}/api/v1/auth/order-status/${orderId}`,{status:value});
         getAllOrders();
     } catch (error) {
         console.log(error)
@@ -79,7 +80,7 @@ const handleChange = async (value, orderId) => {
                             <div className="row mb-2 p-3 card flex-row">
                               <div className="col-md-4">
                                 <img
-                                  src={`/api/v1/product/product-photo/${p._id}`}
+                                  src={`${API_URI}/api/v1/product/product-photo/${p._id}`}
                                   className="card-img-top "
                                   alt={p.name}
                                 />

@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../styles/AuthStyles.css"
+import { API_URI } from "../../context/api";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -21,7 +22,7 @@ const Register = () => {
     // toast.success('Registered Successfully');
 
     try {
-      const res = await axios.post("/api/v1/auth/register", {
+      const res = await axios.post(`${API_URI}/api/v1/auth/register`, {
         name,
         email,
         password,
