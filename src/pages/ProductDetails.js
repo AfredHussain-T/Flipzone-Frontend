@@ -46,8 +46,8 @@ const getSimilarProducts = async (pid, cid) => {
   return (
     <Layout title={"FlipZone"}>
         <div className="row container product-details">
-            <div className="col-md-6 productImgContainer">
-                    <img src={`${API_URI}/api/v1/product/product-photo/${product._id}`} className="card-img-top productImg" alt={product.name}/>
+            <div className="col-md-6">
+                    <img src={`${API_URI}/api/v1/product/product-photo/${product._id}`} className="card-img-top" alt={product.name}/>
             </div>
             <div className="col-md-6 product-details-info">
                     <h1 className=" text-center">Product Details</h1>

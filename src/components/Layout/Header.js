@@ -40,9 +40,8 @@ const Header = () => {
             <Link to="/" className="navbar-brand">
               🛒 FlipZone
             </Link>
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0 nav-right">
-              <div className="search-container"><SearchInput/></div>
-              <div className="navLinks">
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              <SearchInput/>
               <li className="nav-item" >
                 <NavLink to="/" className="nav-link">
                   Home
@@ -93,7 +92,7 @@ const Header = () => {
                   </NavLink>
                 </Badge>
               </li>
-              </div>
+              
             </ul>
           </div>
         </div>

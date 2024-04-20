@@ -60,11 +60,12 @@ const Orders = () => {
                             </table>
                             <div className="container">
                           {order?.products?.map((p) => (
-                            <div className="row p-5 card flex-row checkoutCard mt-2">
+                            <div className="row 
+                            p-3 card flex-row mb-2">
                               <div className="col-md-4">
                                 <img
                                   src={`${API_URI}/api/v1/product/product-photo/${p._id}`}
-                                  className="card-img-top h-40 checkoutCardImg"
+                                  className="card-img-top"
                                   alt={p.name}
                                   onClick={() => {
                                     navigate(`/product/${p.slug}`);
